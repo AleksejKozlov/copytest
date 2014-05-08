@@ -1,11 +1,10 @@
-//(function ($) {
-//    'use strict';
+(function ($) {
+   'use strict';
 
     var app = {
-        numbers: document.getElementsByClassName('number'),
+        number: $('.number'),
 
         init: function () {
-            //console.log('start');
             this.buildDOM();
             this.bindEvents();
         },
@@ -19,11 +18,11 @@
             x = (w - gutter * 5) / 4;
             y = (h - gutter * 10) / 9;
 
-            for (i = 0; i < app.numbers.length; i++) {
-                app.numbers[i].style.width = x + 'px';
-                app.numbers[i].style.height = y + 'px';
-                app.numbers[i].style.lineHeight = y + 'px';
-            }
+            $.each(app.number, function () {
+                $(this).css('width', x + 'px')
+                       .css('height', y + 'px')
+                       .css('line-height', y + 'px');
+            })
         },
 
         copyCode: function (event) {
@@ -43,16 +42,18 @@
         // Bind any events that are required on startup. Common events are:
         // 'load', 'deviceready', 'offline', and 'online'.
         bindEvents: function () {
+            /*
             for (i = 0; i < this.numbers.length; i++) {
                 this.numbers[i].addEventListener('click', this.copyCode, false);
             }
-        
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            /*
-            $('.header-icon-holder').on('click', function () {
-                $(this).toggleClass('active');
-            });
             */
+            //document.addEventListener('deviceready', this.onDeviceReady, false);
+            
+
+            $('.header-icon-holder').on('click', function () {
+                $(this).toggleClass('settings');
+                $('.main-wrapper').toggleClass('active');
+            });
         },
         // deviceready Event Handler
         //
@@ -76,4 +77,4 @@
 
     app.init();
 
-//})(window.jQuery);
+})(window.jQuery);
