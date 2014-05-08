@@ -31,16 +31,14 @@ h1 {
 	width: 50px;
 	height: 50px;
 
-	& > .icon {
-		margin: 9px;
-	}
-
 	& > .settings-icon {
 		display: none;
+		margin: 9px;
 	}
 
 	& > .save-icon {
 		display: block;
+		margin: 9px;
 	}
 
 	&.settings {

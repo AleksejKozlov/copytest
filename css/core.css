@@ -63,17 +63,6 @@ html {
 .slide-panel-wrapper {
   padding: 50px 0 25px; }
 
-.icon {
-  width: 32px;
-  height: 32px;
-  background: url(../img/icons.png) 0 0 no-repeat; }
-
-.settings-icon {
-  background-position: 0 0; }
-
-.save-icon {
-  background-position: -32px 0; }
-
 .hidden {
   display: none; }
 
@@ -112,12 +101,12 @@ h1 {
 .header-icon-holder {
   width: 50px;
   height: 50px; }
-  .header-icon-holder > .icon {
-    margin: 9px; }
   .header-icon-holder > .settings-icon {
-    display: none; }
+    display: none;
+    margin: 9px; }
   .header-icon-holder > .save-icon {
-    display: block; }
+    display: block;
+    margin: 9px; }
   .header-icon-holder.settings > .settings-icon {
     display: block; }
   .header-icon-holder.settings > .save-icon {
