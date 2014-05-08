@@ -1,0 +1,55 @@
+.hidden {
+	display: none;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 25px;
+	width: 100%;
+	@include gradient(#2db8ef, #026eac);
+	color: #fff;
+	line-height: 25px;
+
+	> h1 {
+		float: left;
+	}
+
+	> .header-icon-holder {
+		float: right;
+	}
+}
+
+h1 {
+	margin-left: 5px;
+	font-size: 1em;
+}
+
+.header-icon-holder {
+	width: 25px;
+	height: 25px;
+
+	& > .icon {
+		margin: 4.5px;
+	}
+
+	& > .settings-icon {
+		display: none;
+	}
+
+	& > .save-icon {
+		display: block;
+	}
+
+	&.settings {
+		& > .settings-icon {
+			display: block;
+		}
+
+		& > .save-icon {
+			display: none;
+		}
+	}
+}
