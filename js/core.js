@@ -12,7 +12,7 @@
 
         buildDOM: function () {
             var w = window.innerWidth,
-                h = window.innerHeight - 25,
+                h = window.innerHeight - 50,
                 gutter = 25,
                 x, y;
 

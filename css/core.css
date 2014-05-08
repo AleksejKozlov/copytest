@@ -36,7 +36,7 @@ html {
   height: 100%; }
 
 .main-wrapper {
-  padding: 25px 0;
+  padding: 50px 0 25px;
   position: relative;
   transform: translate3d(0, 0, 0) translateZ(0);
   -moz-transform: translate3d(0, 0, 0) translateZ(0);
@@ -61,7 +61,7 @@ html {
   -webkit-transform: translateZ(0); }
 
 .slide-panel-wrapper {
-  padding: 25px 0; }
+  padding: 50px 0 25px; }
 
 .icon {
   width: 16px;
@@ -82,7 +82,7 @@ header {
   top: 0;
   left: 0;
   z-index: 1;
-  height: 25px;
+  height: 50px;
   width: 100%;
   background-color: #026eac;
   /* Fallback Color */
@@ -99,7 +99,7 @@ header {
   background-image: linear-gradient(top, #2db8ef, #026eac);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2db8ef', EndColorStr='#026eac');
   color: #fff;
-  line-height: 25px; }
+  line-height: 50px; }
   header > h1 {
     float: left; }
   header > .header-icon-holder {
@@ -110,10 +110,10 @@ h1 {
   font-size: 1em; }
 
 .header-icon-holder {
-  width: 25px;
-  height: 25px; }
+  width: 50px;
+  height: 50px; }
   .header-icon-holder > .icon {
-    margin: 4.5px; }
+    margin: 17px; }
   .header-icon-holder > .settings-icon {
     display: none; }
   .header-icon-holder > .save-icon {

@@ -10,7 +10,7 @@ html {
 }
 
 .main-wrapper {
-	padding: 25px 0;
+	padding: 50px 0 25px;
 	position: relative;
 	
 	@include transform(translate3d(0, 0, 0) translateZ(0));
@@ -33,5 +33,5 @@ html {
 }
 
 .slide-panel-wrapper {
-	padding: 25px 0;
+	padding: 50px 0 25px;
 }
