@@ -203,7 +203,8 @@ h1 {
     border: none;
     border-bottom: 2px solid #026eac;
     text-align: center;
-    color: #026eac;
-    -webkit-user-modify: read-write-plaintext-only;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+    color: #026eac; }
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
