@@ -31,14 +31,6 @@
             x = (w - gutter * 5) / 4;
             y = (h - gutter * 10) / 9;
 
-            /*
-            $.each(app.$number, function () {
-                $(this).css('width', x + 'px')
-                       .css('height', y + 'px')
-                       .css('line-height', y + 'px');
-            })
-            */
-
             for (var i = 1; i <= count; i++) {
                 var item = '<li><span class="number" data-code="" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
 
@@ -74,6 +66,8 @@
             this.$headerIcon.on('click', function () {
                 $(this).toggleClass('settings');
                 app.$mainWrapper.toggleClass('active');
+
+                window.plugins.SoftKeyboard.prototype.show();
             });
         },
         // deviceready Event Handler
