@@ -16,7 +16,7 @@
 
         buildEditList: function (count) {
             for (var i = 1; i <= count; i++) {
-                var item = '<li><div class="edit-code-item"><span class="number">' + i + '</span><span class="code"></span></div></li>';
+                var item = '<li><div class="edit-code-item"><span class="number">' + i + '</span><input class="code" type="number" name=""/></div></li>';
 
                 app.$editCodeList.append(item);
             }
@@ -68,9 +68,9 @@
                 app.$mainWrapper.toggleClass('active');
 
                 if (app.$mainWrapper.hasClass('active')) {
-                    SoftKeyboard.show();
+                    //SoftKeyboard.show();
                 } else {
-                    SoftKeyboard.hide();
+                    //SoftKeyboard.hide();
                 }
             });
         },
