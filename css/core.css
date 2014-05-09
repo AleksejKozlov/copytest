@@ -195,7 +195,7 @@ h1 {
     position: absolute;
     top: 0;
     left: 0; }
-  .edit-code-item > .code, .edit-code-item > .code:active {
+  .edit-code-item > .code, .edit-code-item > .code:focus {
     margin-left: 50px;
     display: block;
     height: 23px;
