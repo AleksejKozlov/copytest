@@ -4,12 +4,12 @@
     var app = {
         $header: $('header'),
         $headerIcon: $('.header-icon-holder'),
-        $number: $('.code-list .number'),
         $mainWrapper: $('.main-wrapper'),
+        $codeList: $('.code-list'),
         $editCodeList: $('.edit-code-list'),
 
         init: function () {
-            this.buildCodeList();
+            this.buildCodeList(36);
             this.buildEditList(36);
             this.bindEvents();
         },
@@ -22,7 +22,7 @@
             }
         },
 
-        buildCodeList: function () {
+        buildCodeList: function (count) {
             var w = window.innerWidth,
                 h = window.innerHeight - app.$header.innerHeight(),
                 gutter = 25,
@@ -31,11 +31,19 @@
             x = (w - gutter * 5) / 4;
             y = (h - gutter * 10) / 9;
 
+            /*
             $.each(app.$number, function () {
                 $(this).css('width', x + 'px')
                        .css('height', y + 'px')
                        .css('line-height', y + 'px');
             })
+            */
+
+            for (var i = 1; i <= count; i++) {
+                var item = '<li><span class="number" data-code="" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
+
+                app.$codeList.append(item);
+            }
         },
 
         copyCode: function (event) {

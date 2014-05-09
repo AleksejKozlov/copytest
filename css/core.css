@@ -54,7 +54,10 @@ html {
 .main-item {
   width: 50%;
   height: 100%;
-  float: left; }
+  float: left;
+  overflow: hidden; }
+  .main-item.scroll {
+    overflow-y: auto; }
 
 .main-item-wrapper {
   padding: 50px 0 25px; }
@@ -91,8 +94,9 @@ header {
     float: right; }
 
 h1 {
-  margin-left: 5px;
-  font-size: 1em; }
+  margin-left: 25px;
+  font-size: 1.25m;
+  font-weight: 700; }
 
 .header-icon-holder {
   width: 50px;
@@ -107,6 +111,48 @@ h1 {
     display: block; }
   .header-icon-holder.settings > .save-icon {
     display: none; }
+
+.code-list > li {
+  float: left;
+  list-style: none;
+  margin: 25px 0 0 25px;
+  text-align: center; }
+  .code-list > li > .number {
+    background-color: #026eac;
+    /* Fallback Color */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2db8ef), to(#026eac));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #2db8ef, #026eac);
+    /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image: -moz-linear-gradient(top, #2db8ef, #026eac);
+    /* FF3.6 */
+    background-image: -ms-linear-gradient(top, #2db8ef, #026eac);
+    /* IE10 */
+    background-image: -o-linear-gradient(top, #2db8ef, #026eac);
+    /* Opera 11.10+ */
+    background-image: linear-gradient(top, #2db8ef, #026eac);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2db8ef', EndColorStr='#026eac');
+    border-radius: 5px;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    display: block; }
+    .code-list > li > .number.active {
+      background-color: #44ab01;
+      /* Fallback Color */
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#60cc18), to(#44ab01));
+      /* Saf4+, Chrome */
+      background-image: -webkit-linear-gradient(top, #60cc18, #44ab01);
+      /* Chrome 10+, Saf5.1+, iOS 5+ */
+      background-image: -moz-linear-gradient(top, #60cc18, #44ab01);
+      /* FF3.6 */
+      background-image: -ms-linear-gradient(top, #60cc18, #44ab01);
+      /* IE10 */
+      background-image: -o-linear-gradient(top, #60cc18, #44ab01);
+      /* Opera 11.10+ */
+      background-image: linear-gradient(top, #60cc18, #44ab01);
+      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#60cc18', EndColorStr='#44ab01'); }
 
 .edit-code-list {
   margin-bottom: 25px;
@@ -158,50 +204,6 @@ h1 {
     color: #026eac; }
 
 s.number.active {
-  background-color: #44ab01;
-  /* Fallback Color */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#60cc18), to(#44ab01));
-  /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #60cc18, #44ab01);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #60cc18, #44ab01);
-  /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #60cc18, #44ab01);
-  /* IE10 */
-  background-image: -o-linear-gradient(top, #60cc18, #44ab01);
-  /* Opera 11.10+ */
-  background-image: linear-gradient(top, #60cc18, #44ab01);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#60cc18', EndColorStr='#44ab01'); }
-
-.code-list > li {
-  float: left;
-  list-style: none;
-  margin: 25px 0 0 25px;
-  text-align: center; }
-
-.number {
-  background-color: #026eac;
-  /* Fallback Color */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2db8ef), to(#026eac));
-  /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #2db8ef, #026eac);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #2db8ef, #026eac);
-  /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #2db8ef, #026eac);
-  /* IE10 */
-  background-image: -o-linear-gradient(top, #2db8ef, #026eac);
-  /* Opera 11.10+ */
-  background-image: linear-gradient(top, #2db8ef, #026eac);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2db8ef', EndColorStr='#026eac');
-  border-radius: 5px;
-  font-size: 1.5em;
-  font-weight: 700;
-  text-align: center;
-  color: #fff;
-  display: block; }
-
-.number.active {
   background-color: #44ab01;
   /* Fallback Color */
   background-image: -webkit-gradient(linear, left top, left bottom, from(#60cc18), to(#44ab01));

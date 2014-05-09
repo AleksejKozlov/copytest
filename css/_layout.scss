@@ -29,6 +29,11 @@ html {
 	width: 50%;
 	height: 100%;
 	float: left;
+	overflow: hidden;
+	
+	&.scroll {
+		overflow-y: auto;
+	}
 }
 
 .main-item-wrapper {
