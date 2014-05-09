@@ -204,5 +204,6 @@ h1 {
     border-bottom: 2px solid #026eac;
     text-align: center;
     color: #026eac;
+    -webkit-user-modify: read-write-plaintext-only;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
 
