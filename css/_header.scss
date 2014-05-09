@@ -13,12 +13,10 @@ header {
 	color: #fff;
 	line-height: 50px;
 
-	> h1 {
-		float: left;
-	}
-
 	> .header-icon-holder {
-		float: right;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }
 
@@ -26,6 +24,7 @@ h1 {
 	margin-left: 25px;
 	font-size: 1.25m;
 	font-weight: 700;
+	text-align: center;
 }
 
 .header-icon-holder {

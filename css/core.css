@@ -88,15 +88,16 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2db8ef', EndColorStr='#026eac');
   color: #fff;
   line-height: 50px; }
-  header > h1 {
-    float: left; }
   header > .header-icon-holder {
-    float: right; }
+    position: absolute;
+    top: 0;
+    right: 0; }
 
 h1 {
   margin-left: 25px;
   font-size: 1.25m;
-  font-weight: 700; }
+  font-weight: 700;
+  text-align: center; }
 
 .header-icon-holder {
   width: 50px;

@@ -67,9 +67,11 @@
                 $(this).toggleClass('settings');
                 app.$mainWrapper.toggleClass('active');
 
-                alert(window.plugins.SoftKeyboard);
-                //alert(window.plugins.SoftKeyboard.show());
-                window.plugins.SoftKeyboard.prototype.show();
+                if (app.$mainWrapper.hasClass('active')) {
+                    SoftKeyboard.show();
+                } else {
+                    SoftKeyboard.hide();
+                }
             });
         },
         // deviceready Event Handler
