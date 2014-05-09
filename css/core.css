@@ -195,7 +195,7 @@ h1 {
     position: absolute;
     top: 0;
     left: 0; }
-  .edit-code-item > .code, .edit-code-item > .code:focus {
+  .edit-code-item > .code {
     margin-left: 50px;
     display: block;
     height: 23px;
@@ -203,5 +203,6 @@ h1 {
     border: none;
     border-bottom: 2px solid #026eac;
     text-align: center;
-    color: #026eac; }
+    color: #026eac;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
 
