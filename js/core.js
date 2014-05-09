@@ -5,7 +5,7 @@
         $header: $('header'),
         $headerIcon: $('.header-icon-holder'),
         $number: $('.code-list .number'),
-        $mainWrapper: $('.main-wrapper'),
+        $main: $('.main'),
         $editCodeList: $('.edit-code-list'),
 
         init: function () {
@@ -65,7 +65,7 @@
 
             this.$headerIcon.on('click', function () {
                 $(this).toggleClass('settings');
-                app.$mainWrapper.toggleClass('active');
+                app.$main.toggleClass('active');
             });
         },
         // deviceready Event Handler
