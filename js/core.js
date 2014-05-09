@@ -67,6 +67,8 @@
                 $(this).toggleClass('settings');
                 app.$mainWrapper.toggleClass('active');
 
+                alert(window.plugins.SoftKeyboard);
+                //alert(window.plugins.SoftKeyboard.show());
                 window.plugins.SoftKeyboard.prototype.show();
             });
         },
