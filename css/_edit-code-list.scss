@@ -30,21 +30,15 @@
 		left: 0;
 	}
 
-	& > .code {
+	& > .code,
+	& > .code:active {
 		margin-left: 50px;
 		display: block;
 		height: 23px;
 		line-height: 23px;
+		border: none;
 		border-bottom: 2px solid #026eac;
 		text-align: center;
 		color: #026eac;
 	}
-}
-
-
-
-
-
-s.number.active {
-	@include gradient(#60cc18, #44ab01);
 }

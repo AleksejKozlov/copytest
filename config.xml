@@ -79,7 +79,6 @@
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
-    <gap:plugin name="de.phonostar.softkeyboard-custom" version="0.1.1" />
     <gap:plugin name="com.verso.cordova.clipboard" version="0.1.0" />
     <!--
         Define access to external domains.

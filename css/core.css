@@ -195,28 +195,13 @@ h1 {
     position: absolute;
     top: 0;
     left: 0; }
-  .edit-code-item > .code {
+  .edit-code-item > .code, .edit-code-item > .code:active {
     margin-left: 50px;
     display: block;
     height: 23px;
     line-height: 23px;
+    border: none;
     border-bottom: 2px solid #026eac;
     text-align: center;
     color: #026eac; }
-
-s.number.active {
-  background-color: #44ab01;
-  /* Fallback Color */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#60cc18), to(#44ab01));
-  /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #60cc18, #44ab01);
-  /* Chrome 10+, Saf5.1+, iOS 5+ */
-  background-image: -moz-linear-gradient(top, #60cc18, #44ab01);
-  /* FF3.6 */
-  background-image: -ms-linear-gradient(top, #60cc18, #44ab01);
-  /* IE10 */
-  background-image: -o-linear-gradient(top, #60cc18, #44ab01);
-  /* Opera 11.10+ */
-  background-image: linear-gradient(top, #60cc18, #44ab01);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#60cc18', EndColorStr='#44ab01'); }
 

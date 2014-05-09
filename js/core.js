@@ -15,8 +15,12 @@
         },
 
         buildEditList: function (count) {
+            var w = window.innerWidth,
+                gutter = 25,
+                inputWidth = w - 4 * gutter;
+
             for (var i = 1; i <= count; i++) {
-                var item = '<li><div class="edit-code-item"><span class="number">' + i + '</span><input class="code" type="number" name=""/></div></li>';
+                var item = '<li><div class="edit-code-item"><span class="number">' + i + '</span><input class="code" type="number" name="" style="width: ' + inputWidth + 'px"/></div></li>';
 
                 app.$editCodeList.append(item);
             }
