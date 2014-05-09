@@ -1,0 +1,50 @@
+.edit-code-list {
+	margin-bottom: 25px;
+	float: left;
+}
+
+.edit-code-list > li {
+	display: block;
+	margin-top: 25px;
+	float: left;
+	width: 100%;
+}
+
+.edit-code-item {
+    list-style: none;
+	position: relative;
+	margin: 0 25px;
+
+	& > .number {
+		@include gradient(#2db8ef, #026eac);
+		border-radius: 5px;
+		font-size: 1.25em;
+		font-weight: 700;
+		text-align: center;
+		color: #fff;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	& > .code {
+		margin-left: 50px;
+		display: block;
+		height: 23px;
+		line-height: 23px;
+		border-bottom: 2px solid #026eac;
+		text-align: center;
+		color: #026eac;
+	}
+}
+
+
+
+
+
+s.number.active {
+	@include gradient(#60cc18, #44ab01);
+}

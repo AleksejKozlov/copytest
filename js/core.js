@@ -1,24 +1,37 @@
 (function ($) {
-   'use strict';
+    'use strict';
 
     var app = {
-        number: $('.number'),
+        $header: $('header'),
+        $headerIcon: $('.header-icon-holder'),
+        $number: $('.code-list .number'),
+        $mainWrapper: $('.main-wrapper'),
+        $editCodeList: $('.edit-code-list'),
 
         init: function () {
-            this.buildDOM();
+            this.buildCodeList();
+            this.buildEditList(36);
             this.bindEvents();
         },
 
-        buildDOM: function () {
+        buildEditList: function (count) {
+            for (var i = 1; i <= count; i++) {
+                var item = '<li><div class="edit-code-item"><span class="number">' + i + '</span><span class="code"></span></div></li>';
+
+                app.$editCodeList.append(item);
+            }
+        },
+
+        buildCodeList: function () {
             var w = window.innerWidth,
-                h = window.innerHeight - 50,
+                h = window.innerHeight - app.$header.innerHeight(),
                 gutter = 25,
                 x, y;
 
             x = (w - gutter * 5) / 4;
             y = (h - gutter * 10) / 9;
 
-            $.each(app.number, function () {
+            $.each(app.$number, function () {
                 $(this).css('width', x + 'px')
                        .css('height', y + 'px')
                        .css('line-height', y + 'px');
@@ -50,9 +63,9 @@
             //document.addEventListener('deviceready', this.onDeviceReady, false);
             
 
-            $('.header-icon-holder').on('click', function () {
+            this.$headerIcon.on('click', function () {
                 $(this).toggleClass('settings');
-                $('.main-wrapper').toggleClass('active');
+                app.$mainWrapper.toggleClass('active');
             });
         },
         // deviceready Event Handler

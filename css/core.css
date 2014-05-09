@@ -32,7 +32,7 @@ html {
 
 .main {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100%; }
 
 .main-wrapper {
@@ -111,6 +111,71 @@ h1 {
     display: block; }
   .header-icon-holder.settings > .save-icon {
     display: none; }
+
+.edit-code-list {
+  margin-bottom: 25px;
+  float: left; }
+
+.edit-code-list > li {
+  display: block;
+  margin-top: 25px;
+  float: left;
+  width: 100%; }
+
+.edit-code-item {
+  list-style: none;
+  position: relative;
+  margin: 0 25px; }
+  .edit-code-item > .number {
+    background-color: #026eac;
+    /* Fallback Color */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2db8ef), to(#026eac));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #2db8ef, #026eac);
+    /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image: -moz-linear-gradient(top, #2db8ef, #026eac);
+    /* FF3.6 */
+    background-image: -ms-linear-gradient(top, #2db8ef, #026eac);
+    /* IE10 */
+    background-image: -o-linear-gradient(top, #2db8ef, #026eac);
+    /* Opera 11.10+ */
+    background-image: linear-gradient(top, #2db8ef, #026eac);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#2db8ef', EndColorStr='#026eac');
+    border-radius: 5px;
+    font-size: 1.25em;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .edit-code-item > .code {
+    margin-left: 50px;
+    display: block;
+    height: 23px;
+    line-height: 23px;
+    border-bottom: 2px solid #026eac;
+    text-align: center;
+    color: #026eac; }
+
+s.number.active {
+  background-color: #44ab01;
+  /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#60cc18), to(#44ab01));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #60cc18, #44ab01);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image: -moz-linear-gradient(top, #60cc18, #44ab01);
+  /* FF3.6 */
+  background-image: -ms-linear-gradient(top, #60cc18, #44ab01);
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #60cc18, #44ab01);
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, #60cc18, #44ab01);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#60cc18', EndColorStr='#44ab01'); }
 
 .code-list > li {
   float: left;
