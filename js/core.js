@@ -12,8 +12,8 @@
         editCodes: '.edit-code-item > input',
 
         init: function () {
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            //app.onDeviceReady(); // for web testing
+            //document.addEventListener('deviceready', this.onDeviceReady, false);
+            app.onDeviceReady(); // for web testing
         },
 
         buildEditList: function (count) {
