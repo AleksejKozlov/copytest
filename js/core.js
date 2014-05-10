@@ -95,7 +95,7 @@
 
         populateDB: function (tx) {
             tx.executeSql('DROP TABLE IF EXISTS DEMO');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id INTEGER PRIMARY KEY, code)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)'); 
         },
 
         errorCB: function (err) {
@@ -112,7 +112,15 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
-            alert(len);
+            //alert(len);
+
+            if (len == 0) {
+                for (var i = 1; i <= 36; i++) {
+                    tx.executeSql('INSERT INTO codes (code) VALUES ("")');
+                }
+            } else {
+                alert('we have: ' + len);
+            }
             /*
             for (var i = 0; i < len; i++) {
                 $.app.taskList.append("<li id='" + results.rows.item(i).id + "'><span class='task'>" + results.rows.item(i).task + "</span></li>");
