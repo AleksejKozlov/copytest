@@ -12,8 +12,8 @@
         editCodes: '.edit-code-item > input',
 
         init: function () {
-            //document.addEventListener('deviceready', this.onDeviceReady, false);
-            app.onDeviceReady(); // for web testing
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+            //app.onDeviceReady(); // for web testing
         },
 
         buildEditList: function (count) {
@@ -66,13 +66,13 @@
                     id = $code.data('index'),
                     value = $code.val();
                 
-                console.log(id);
-                console.log(value);
+                //console.log(id);
+                //console.log(value);
 
                 app.codes[id] = value;
             });
 
-            //console.log(app.codes);
+            app.db.transaction(app.saveCodesToDB, app.errorCB);
         },
 
         toggleEditCodeList: function() {
@@ -102,6 +102,10 @@
             alert("Error processing SQL: " + err.code);
         },
 
+        successCB: function () {
+            app.db.transaction(app.getCodes, app.errorCB);
+        },
+
         getCodes: function (tx) {
             tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
         },
@@ -118,14 +122,16 @@
             */
         },
 
-        successCB: function () {
-            app.db.transaction(app.getCodes, app.errorCB);
+        saveCodesToDB: function (tx) {
+            $.each(app.codes, function (i, val) {
+                //console.log('id: ' + i + ' value: ' + val);
+                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+            });
         },
 
         onDeviceReady: function () {
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
-
 
             this.buildCodeList(36);
             this.buildEditList(36);
