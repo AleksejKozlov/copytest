@@ -119,7 +119,12 @@
                     tx.executeSql('INSERT INTO codes (code) VALUES ("")');
                 }
             } else {
-                alert('we have: ' + len);
+                //alert('we have: ' + len);
+                for (var i = 0; i < len; i++) {
+                    app.codes[results.rows.item(i).id] = results.rows.item(i).code;
+                }
+
+                app.updateEditCodeList();
             }
             /*
             for (var i = 0; i < len; i++) {
@@ -131,15 +136,19 @@
         },
 
         saveCodesToDB: function (tx) {
-            alert('save to db');
-
             $.each(app.codes, function (i, val) {
-                //console.log('id: ' + i + ' value: ' + val);
-                //alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
                 tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
             });
+        },
 
-            tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
+        updateEditCodeList: function() {
+            var codes = $(app.editCodes);
+
+            $.each(codes, function (i) {
+                var code = $(this);
+
+                code.attr('value', app.codes[i]);
+            });
         },
 
         onDeviceReady: function () {
