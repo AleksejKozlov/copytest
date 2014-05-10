@@ -72,7 +72,8 @@
                 app.codes[id] = value;
             });
 
-            app.db.transaction(app.saveCodesToDB, app.errorCB);
+            alert('save to db now');
+            //app.db.transaction(app.saveCodesToDB, app.errorCB);
         },
 
         toggleEditCodeList: function () {
@@ -105,7 +106,6 @@
         },
 
         successCB: function () {
-            alert('success CB');
             app.db.transaction(app.getCodes, app.errorCB);
         },
 
