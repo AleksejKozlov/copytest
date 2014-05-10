@@ -72,8 +72,7 @@
                 app.codes[id] = value;
             });
 
-            alert('save to db now');
-            //app.db.transaction(app.saveCodesToDB, app.errorCB);
+            app.db.transaction(app.saveCodesToDB, app.errorCB);
         },
 
         toggleEditCodeList: function () {
@@ -130,8 +129,8 @@
 
             $.each(app.codes, function (i, val) {
                 //console.log('id: ' + i + ' value: ' + val);
-                alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
-                //tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                //alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
             });
         },
 
