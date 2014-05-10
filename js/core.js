@@ -12,8 +12,8 @@
         editCodes: '.edit-code-item > input',
 
         init: function () {
-            //document.addEventListener('deviceready', this.onDeviceReady, false);
-            app.onDeviceReady(); // for web testing
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+            //app.onDeviceReady(); // for web testing
         },
 
         buildEditList: function (count) {
@@ -75,7 +75,9 @@
             app.db.transaction(app.saveCodesToDB, app.errorCB);
         },
 
-        toggleEditCodeList: function() {
+        toggleEditCodeList: function () {
+            alert('show 2nd slide');
+
             $(this).toggleClass('settings');
             
             if (app.$mainWrapper.hasClass('active')) {
@@ -134,8 +136,8 @@
         },
 
         onDeviceReady: function () {
-            //app.openDB();
-            //app.db.transaction(app.populateDB, app.errorCB, app.successCB);
+            app.openDB();
+            app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
             this.buildCodeList(36);
             this.buildEditList(36);
