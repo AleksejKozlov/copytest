@@ -2,6 +2,7 @@
     'use strict';
 
     var app = {
+        db: null,
         codes: {},
         $header: $('header'),
         $headerIcon: $('.header-icon-holder'),
@@ -87,9 +88,9 @@
         bindEvents: function () {
             this.$headerIcon.on('click', this.toggleEditCodeList);
         },
-        /*
+
         openDB: function () {
-            return window.openDatabase("Database", "0.0.1", "Copy Code", 200000);
+            app.db = window.openDatabase("Database", "0.0.1", "Copy Code", 200000);
         },
 
         populateDB: function (tx) {
@@ -101,12 +102,31 @@
             alert("Error processing SQL: " + err.code);
         },
 
-        successCB: function () {
-            var db = app.openDB();
-            db.transaction(app.queryDB, app.errorCB);
+        getCodes: function (tx) {
+            tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
         },
-        */
+
+        getCodesSuccess: function (tx, results) {
+            var len = results.rows.length;
+            alert(len);
+            /*
+            for (var i = 0; i < len; i++) {
+                $.app.taskList.append("<li id='" + results.rows.item(i).id + "'><span class='task'>" + results.rows.item(i).task + "</span></li>");
+            }
+
+            $.app.lastTaskId = ($.app.taskList.children().length > 0) ? $($.app.taskList.children()[0]).attr('id') : 0;
+            */
+        },
+
+        successCB: function () {
+            app.db.transaction(app.getCodes, app.errorCB);
+        },
+
         onDeviceReady: function () {
+            app.openDB();
+            app.db.transaction(app.populateDB, app.errorCB, app.successCB);
+
+
             this.buildCodeList(36);
             this.buildEditList(36);
 
