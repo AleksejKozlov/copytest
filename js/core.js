@@ -76,8 +76,6 @@
         },
 
         toggleEditCodeList: function () {
-            alert('show 2nd slide');
-
             $(this).toggleClass('settings');
             
             if (app.$mainWrapper.hasClass('active')) {
@@ -132,6 +130,8 @@
                 //alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
                 tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
             });
+
+            tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
         },
 
         onDeviceReady: function () {
