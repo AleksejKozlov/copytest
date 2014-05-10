@@ -12,8 +12,8 @@
         editCodes: '.edit-code-item > input',
 
         init: function () {
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            //app.onDeviceReady(); // for web testing
+            //document.addEventListener('deviceready', this.onDeviceReady, false);
+            app.onDeviceReady(); // for web testing
         },
 
         buildEditList: function (count) {
@@ -94,7 +94,7 @@
         },
 
         populateDB: function (tx) {
-            //tx.executeSql('DROP TABLE IF EXISTS DEMO');
+            tx.executeSql('DROP TABLE IF EXISTS DEMO');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id INTEGER PRIMARY KEY, code)');
         },
 
@@ -103,6 +103,7 @@
         },
 
         successCB: function () {
+            alert('success CB');
             app.db.transaction(app.getCodes, app.errorCB);
         },
 
@@ -123,15 +124,18 @@
         },
 
         saveCodesToDB: function (tx) {
+            alert('save to db');
+
             $.each(app.codes, function (i, val) {
                 //console.log('id: ' + i + ' value: ' + val);
-                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                //tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
             });
         },
 
         onDeviceReady: function () {
-            app.openDB();
-            app.db.transaction(app.populateDB, app.errorCB, app.successCB);
+            //app.openDB();
+            //app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
             this.buildCodeList(36);
             this.buildEditList(36);
