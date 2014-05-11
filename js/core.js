@@ -51,7 +51,7 @@
             var className = (code == '') ? 'empty' : '';
             
             return className;
-        }
+        },
         /*
         copyCode: function (event) {
             var number = event.currentTarget,
