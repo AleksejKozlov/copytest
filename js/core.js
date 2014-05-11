@@ -2,6 +2,7 @@
     'use strict';
 
     var app = {
+        maxCodes: 36,
         db: null,
         codes: {},
         $header: $('header'),
@@ -43,7 +44,7 @@
                 app.$codeList.append(item);
             }
         },
-
+        /*
         copyCode: function (event) {
             var number = event.currentTarget,
                 code = number.getAttribute('data-code');
@@ -55,10 +56,8 @@
 
             window.plugins.clipboard.copy(code);
         },
-
+        */
         saveCodes: function() {
-            console.log('save all');
-
             var codes = $(app.editCodes);
 
             $.each(codes, function () {
@@ -66,9 +65,6 @@
                     id = $code.data('index'),
                     value = $code.val();
                 
-                //console.log(id);
-                //console.log(value);
-
                 app.codes[id] = value;
             });
 
@@ -94,12 +90,12 @@
         },
 
         populateDB: function (tx) {
-            tx.executeSql('DROP TABLE IF EXISTS DEMO');
+            //tx.executeSql('DROP TABLE IF EXISTS codes');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)'); 
         },
 
         errorCB: function (err) {
-            alert("Error processing SQL: " + err.code);
+            alert("Error processing SQL: " + err.code + ' ' + err);
         },
 
         successCB: function () {
@@ -112,14 +108,21 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
-            //alert(len);
+            alert('number of codes: ' + len);
 
             if (len == 0) {
-                for (var i = 1; i <= 36; i++) {
-                    tx.executeSql('INSERT INTO codes (code) VALUES ("")');
+                for (var i = 1; i <= app.maxCodes; i++) {
+                    tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "")');
                 }
             } else {
-                alert('we have: ' + len);
+                for (var i = 0; i < len; i++) {
+                    app.codes[results.rows.item(i).id] = results.rows.item(i).code;
+
+                    //var index = i + 1;
+                    //alert('index: ' + index + ' value: ' + app.codes[i + 1]);
+                }
+
+                app.updateEditCodeList();
             }
             /*
             for (var i = 0; i < len; i++) {
@@ -131,25 +134,30 @@
         },
 
         saveCodesToDB: function (tx) {
-            alert('save to db');
-
             $.each(app.codes, function (i, val) {
-                //console.log('id: ' + i + ' value: ' + val);
-                //alert('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
-                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                //alert('UPDATE codes SET code = "' + val + '" WHERE id = ' + i + '');
+                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = ' + i + '');
             });
+        },
 
-            tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
+        updateEditCodeList: function() {
+            var codes = $(app.editCodes);
+
+            $.each(codes, function (i) {
+                var code = $(this);
+
+                code.attr('value', app.codes[i+1]);
+            });
         },
 
         onDeviceReady: function () {
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
-            this.buildCodeList(36);
-            this.buildEditList(36);
+            this.buildCodeList(this.maxCodes);
+            this.buildEditList(this.maxCodes);
 
-            this.bindEvents();   
+            this.bindEvents();
         }
     }
 
