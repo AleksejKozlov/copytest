@@ -90,7 +90,7 @@
         },
 
         populateDB: function (tx) {
-            tx.executeSql('DROP TABLE IF EXISTS codes');
+            //tx.executeSql('DROP TABLE IF EXISTS codes');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)'); 
         },
 
@@ -117,7 +117,10 @@
             } else {
                 for (var i = 1; i <= len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
+                    alert('index: ' + i + ' value: ' + app.codes[i])
                 }
+
+                alert('dummy codes created');
 
                 app.updateEditCodeList();
             }
