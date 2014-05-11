@@ -2,6 +2,7 @@
     'use strict';
 
     var app = {
+        maxCodes: 36,
         db: null,
         codes: {},
         $header: $('header'),
@@ -66,9 +67,6 @@
                     id = $code.data('index'),
                     value = $code.val();
                 
-                //console.log(id);
-                //console.log(value);
-
                 app.codes[id] = value;
             });
 
@@ -112,14 +110,12 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
-            //alert(len);
 
             if (len == 0) {
-                for (var i = 1; i <= 36; i++) {
+                for (var i = 1; i <= app.maxCodes; i++) {
                     tx.executeSql('INSERT INTO codes (code) VALUES ("")');
                 }
             } else {
-                //alert('we have: ' + len);
                 for (var i = 0; i < len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
                 }
@@ -147,7 +143,7 @@
             $.each(codes, function (i) {
                 var code = $(this);
 
-                code.attr('value', app.codes[i]);
+                code.attr('value', app.codes[i+1]);
             });
         },
 
@@ -155,10 +151,12 @@
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
-            this.buildCodeList(36);
-            this.buildEditList(36);
+            this.buildCodeList(this.maxCodes);
+            this.buildEditList(this.maxCodes);
 
-            this.bindEvents();   
+            this.bindEvents();
+
+            this.updateEditCodeList();
         }
     }
 
