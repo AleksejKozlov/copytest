@@ -142,7 +142,7 @@
             $.each(codes, function (i) {
                 var code = $(this);
 
-                code.attr('value', app.codes[i]);
+                code.attr('value', app.codes[i+1]);
             });
         },
 
@@ -154,8 +154,6 @@
             this.buildEditList(this.maxCodes);
 
             this.bindEvents();
-
-            this.updateEditCodeList();
         }
     }
 
