@@ -97,7 +97,7 @@
 
         bindEvents: function () {
             this.$headerIcon.on('click', this.toggleEditCodeList);
-            $(this.codeNumber).on('click', this.copyCode);
+            this.$codeList.on('click', this.codeNumber, this.copyCode);
         },
 
         openDB: function () {
