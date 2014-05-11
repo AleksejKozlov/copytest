@@ -11,6 +11,7 @@
         $codeList: $('.code-list'),
         $editCodeList: $('.edit-code-list'),
         editCodes: '.edit-code-item > input',
+        codeNumber: '.number',
 
         init: function () {
             //document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -43,7 +44,7 @@
 
             for (var i = 1; i <= count; i++) {
                 var code = app.codes[i],
-                    item = '<li><span class="number '+app.checkIfEmptyCode(code)+'" data-code="'+code+'" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
+                    item = '<li class="code-item"><span class="number '+app.checkIfEmptyCode(code)+'" data-code="'+code+'" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
 
                 app.$codeList.append(item);
             }
@@ -54,19 +55,18 @@
             
             return className;
         },
-        /*
+        
         copyCode: function (event) {
-            var number = event.currentTarget,
-                code = number.getAttribute('data-code');
+            var number = (this),
+                code = number.data('code');
 
-            for (i = 0; i < app.numbers.length; i++) {
-                app.numbers[i].setAttribute('class', 'number');
-            }
-            number.setAttribute('class', 'number active');
+            $(app.codeNumber).removeClass('active');
+            number.addClass('active');
 
             window.plugins.clipboard.copy(code);
+            // show msg that copied
         },
-        */
+        
         saveCodes: function() {
             var codes = $(app.editCodes);
 
@@ -97,6 +97,7 @@
 
         bindEvents: function () {
             this.$headerIcon.on('click', this.toggleEditCodeList);
+            this.codeNumber.on('click', this.copyCode);
         },
 
         openDB: function () {
