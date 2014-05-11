@@ -57,7 +57,7 @@
         },
         
         copyCode: function (event) {
-            var number = (this),
+            var number = $(this),
                 code = number.data('code');
 
             $(app.codeNumber).removeClass('active');
@@ -97,7 +97,7 @@
 
         bindEvents: function () {
             this.$headerIcon.on('click', this.toggleEditCodeList);
-            this.codeNumber.on('click', this.copyCode);
+            $(this.codeNumber).on('click', this.copyCode);
         },
 
         openDB: function () {
@@ -123,7 +123,6 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
-            alert('number of codes: ' + len);
 
             if (len == 0) {
                 for (var i = 1; i <= app.maxCodes; i++) {
@@ -137,13 +136,6 @@
                 app.buildCodeList(app.maxCodes);
                 app.updateEditCodeList();
             }
-            /*
-            for (var i = 0; i < len; i++) {
-                $.app.taskList.append("<li id='" + results.rows.item(i).id + "'><span class='task'>" + results.rows.item(i).task + "</span></li>");
-            }
-
-            $.app.lastTaskId = ($.app.taskList.children().length > 0) ? $($.app.taskList.children()[0]).attr('id') : 0;
-            */
         },
 
         saveCodesToDB: function (tx) {
