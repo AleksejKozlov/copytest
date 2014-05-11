@@ -117,9 +117,11 @@
 
                 alert('dummies created');
             } else {
-                for (var i = 1; i <= len; i++) {
+                for (var i = 0; i < len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
-                    alert('index: ' + i + ' value: ' + app.codes[i])
+
+                    var index = i + 1;
+                    alert('index: ' + index + ' value: ' + app.codes[i + 1]);
                 }
 
                 //app.updateEditCodeList();
