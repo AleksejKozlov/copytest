@@ -30,6 +30,8 @@
         },
 
         buildCodeList: function (count) {
+            app.$codeList.empty();
+
             var w = window.innerWidth,
                 h = window.innerHeight - app.$header.innerHeight(),
                 gutter = 25,
@@ -76,7 +78,11 @@
                 app.codes[id] = value;
             });
 
+            // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
+
+            // rebuild code list
+            app.buildCodeList(app.maxCodes);
         },
 
         toggleEditCodeList: function () {
@@ -141,7 +147,6 @@
 
         saveCodesToDB: function (tx) {
             $.each(app.codes, function (i, val) {
-                //alert('UPDATE codes SET code = "' + val + '" WHERE id = ' + i + '');
                 tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = ' + i + '');
             });
         },
