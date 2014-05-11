@@ -58,8 +58,6 @@
         },
 
         saveCodes: function() {
-            console.log('save all');
-
             var codes = $(app.editCodes);
 
             $.each(codes, function () {
@@ -92,7 +90,7 @@
         },
 
         populateDB: function (tx) {
-            tx.executeSql('DROP TABLE IF EXISTS DEMO');
+            //tx.executeSql('DROP TABLE IF EXISTS DEMO');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)'); 
         },
 
