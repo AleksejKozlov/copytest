@@ -108,21 +108,21 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
-            alert(len);
+            alert('number of codes: ' + len);
 
             if (len == 0) {
                 for (var i = 1; i <= app.maxCodes; i++) {
                     tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "")');
                 }
+
+                alert('dummies created');
             } else {
                 for (var i = 1; i <= len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
                     alert('index: ' + i + ' value: ' + app.codes[i])
                 }
 
-                alert('dummy codes created');
-
-                app.updateEditCodeList();
+                //app.updateEditCodeList();
             }
             /*
             for (var i = 0; i < len; i++) {
