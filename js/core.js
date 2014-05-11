@@ -90,16 +90,15 @@
         },
 
         populateDB: function (tx) {
-            //tx.executeSql('DROP TABLE IF EXISTS codes');
+            tx.executeSql('DROP TABLE IF EXISTS codes');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)'); 
         },
 
         errorCB: function (err) {
-            alert("Error processing SQL: " + err.code);
+            alert("Error processing SQL: " + err.code + ' ' + err);
         },
 
         successCB: function () {
-            alert('getCodes now');
             app.db.transaction(app.getCodes, app.errorCB);
         },
 
@@ -113,7 +112,7 @@
 
             if (len == 0) {
                 for (var i = 1; i <= app.maxCodes; i++) {
-                    tx.executeSql('INSERT INTO codes (code) VALUES ("")');
+                    tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "")');
                 }
             } else {
                 for (var i = 1; i <= len; i++) {
