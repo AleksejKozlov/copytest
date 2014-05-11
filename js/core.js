@@ -114,17 +114,15 @@
                 for (var i = 1; i <= app.maxCodes; i++) {
                     tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "")');
                 }
-
-                alert('dummies created');
             } else {
                 for (var i = 0; i < len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
 
-                    var index = i + 1;
-                    alert('index: ' + index + ' value: ' + app.codes[i + 1]);
+                    //var index = i + 1;
+                    //alert('index: ' + index + ' value: ' + app.codes[i + 1]);
                 }
 
-                //app.updateEditCodeList();
+                app.updateEditCodeList();
             }
             /*
             for (var i = 0; i < len; i++) {
@@ -149,6 +147,8 @@
 
                 code.attr('value', app.codes[i+1]);
             });
+
+            alert('updateEditCodeList - done');
         },
 
         onDeviceReady: function () {
