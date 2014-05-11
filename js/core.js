@@ -35,15 +35,23 @@
                 gutter = 25,
                 x, y;
 
+            // 4x9 layout
             x = (w - gutter * 5) / 4;
             y = (h - gutter * 10) / 9;
 
             for (var i = 1; i <= count; i++) {
-                var item = '<li><span class="number" data-code="" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
+                var code = app.codes[i],
+                    item = '<li><span class="number '+app.checkIfEmptyCode(code)+'" data-code="'+code+'" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
 
                 app.$codeList.append(item);
             }
         },
+
+        checkIfEmptyCode: function(code) {
+            var className = (code == '') ? 'empty' : '';
+            
+            return className;
+        }
         /*
         copyCode: function (event) {
             var number = event.currentTarget,
@@ -95,7 +103,7 @@
         },
 
         errorCB: function (err) {
-            alert("Error processing SQL: " + err.code + ' ' + err);
+            alert("Error processing SQL: " + err.code);
         },
 
         successCB: function () {
@@ -117,11 +125,9 @@
             } else {
                 for (var i = 0; i < len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
-
-                    //var index = i + 1;
-                    //alert('index: ' + index + ' value: ' + app.codes[i + 1]);
                 }
 
+                app.buildCodeList(app.maxCodes);
                 app.updateEditCodeList();
             }
             /*
@@ -154,7 +160,6 @@
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
-            this.buildCodeList(this.maxCodes);
             this.buildEditList(this.maxCodes);
 
             this.bindEvents();

@@ -13,6 +13,10 @@
 		color: #fff;
 		display: block;
 
+		&.empty {
+			background: #fff;
+		}
+
 		&.active {
 			@include gradient(#60cc18, #44ab01);
 		}

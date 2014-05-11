@@ -143,6 +143,8 @@ h1 {
     text-align: center;
     color: #fff;
     display: block; }
+    .code-list > li > .number.empty {
+      background: #fff; }
     .code-list > li > .number.active {
       background-color: #44ab01;
       /* Fallback Color */
