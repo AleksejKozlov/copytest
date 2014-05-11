@@ -134,9 +134,17 @@
         },
 
         saveCodesToDB: function (tx) {
+            alert('saveCodesToDB now');
+
             $.each(app.codes, function (i, val) {
-                tx.executeSql('UPDATE codes SET code = "' + val + '" WHERE id = "' + i + '"');
+                tx.executeSql('UPDATE codes SET code = "'+val+'" WHERE id = "'+i+'"', [], app.saveCodesToDBSuccess, app.errorCB);
             });
+
+            alert('saveCodesToDB done');
+        },
+
+        saveCodesToDBSuccess: function(tx) {
+            alert('saveCodesToDBSuccess');
         },
 
         updateEditCodeList: function() {
