@@ -60,6 +60,7 @@
             var number = $(this),
                 code = number.data('code');
 
+            alert('clicked');
             $(app.codeNumber).removeClass('active');
             number.addClass('active');
 
@@ -110,6 +111,7 @@
         },
 
         errorCB: function (err) {
+            // show db error
             alert("Error processing SQL: " + err.code);
         },
 
