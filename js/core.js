@@ -108,13 +108,14 @@
 
         getCodesSuccess: function (tx, results) {
             var len = results.rows.length;
+            alert(len);
 
             if (len == 0) {
                 for (var i = 1; i <= app.maxCodes; i++) {
                     tx.executeSql('INSERT INTO codes (code) VALUES ("")');
                 }
             } else {
-                for (var i = 0; i < len; i++) {
+                for (var i = 1; i <= len; i++) {
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
                 }
 
@@ -141,7 +142,7 @@
             $.each(codes, function (i) {
                 var code = $(this);
 
-                code.attr('value', app.codes[i+1]);
+                code.attr('value', app.codes[i]);
             });
         },
 
