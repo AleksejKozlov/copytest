@@ -60,7 +60,6 @@
             var number = $(this),
                 code = number.data('code');
 
-            alert('clicked');
             $(app.codeNumber).removeClass('active');
             number.addClass('active');
 
@@ -138,8 +137,6 @@
                 app.buildCodeList(app.maxCodes);
                 app.updateEditCodeList();
             }
-
-            app.bindEvents();
         },
 
         saveCodesToDB: function (tx) {
@@ -163,6 +160,7 @@
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
             this.buildEditList(this.maxCodes);
+            this.bindEvents();
         }
     }
 
