@@ -60,11 +60,13 @@
             var number = $(this),
                 code = number.data('code');
 
-            $(app.codeNumber).removeClass('active');
-            number.addClass('active');
+            if (!number.hasClass('empty')) {
+                $(app.codeNumber).removeClass('active');
+                number.addClass('active');
 
-            window.plugins.clipboard.copy(code);
-            // show msg that copied
+                window.plugins.clipboard.copy(code);
+                // show msg that copied
+            }
         },
         
         saveCodes: function() {
