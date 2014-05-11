@@ -138,6 +138,8 @@
                 app.buildCodeList(app.maxCodes);
                 app.updateEditCodeList();
             }
+
+            app.bindEvents();
         },
 
         saveCodesToDB: function (tx) {
@@ -161,8 +163,6 @@
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
             this.buildEditList(this.maxCodes);
-
-            this.bindEvents();
         }
     }
 
