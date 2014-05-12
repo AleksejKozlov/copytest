@@ -12,6 +12,8 @@
         $editCodeList: $('.edit-code-list'),
         editCodes: '.edit-code-item > input',
         codeNumber: '.number',
+        msgWrapper: $('.msg-wrapper'),
+        msg: $('.msg'),
 
         init: function () {
             //document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -65,10 +67,19 @@
                 number.addClass('active');
 
                 window.plugins.clipboard.copy(code);
-                // show msg that copied
+                app.showMsg('Copied to Clipboard');
             }
         },
         
+        showMsg: function (msg) {
+            app.msg.text(msg);
+
+            app.msgWrapper.removeClass('hidden');
+            setTimeout(function () {
+                app.msgWrapper.addClass('hidden');
+            }, 750);
+        },
+
         saveCodes: function() {
             var codes = $(app.editCodes);
 
@@ -112,8 +123,7 @@
         },
 
         errorCB: function (err) {
-            // show db error
-            alert("Error processing SQL: " + err.code);
+            app.showMsg('Some problem occured, sorry.');
         },
 
         successCB: function () {
