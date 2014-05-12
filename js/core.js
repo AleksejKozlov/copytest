@@ -104,7 +104,6 @@
             $(this).toggleClass('settings');
             
             if (app.$mainWrapper.hasClass('active')) {
-                app.$header.trigger('click');
                 app.saveCodes();
             }
 
