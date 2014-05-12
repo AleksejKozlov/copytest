@@ -104,6 +104,7 @@
             $(this).toggleClass('settings');
             
             if (app.$mainWrapper.hasClass('active')) {
+                app.$editCodeList.trigger('click');
                 app.saveCodes();
             }
 
