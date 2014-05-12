@@ -168,8 +168,8 @@
         },
 
         onDeviceReady: function () {
-            app.openDB();
-            app.db.transaction(app.populateDB, app.errorCB, app.successCB);
+            //app.openDB();
+            //app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
             this.buildEditList(this.maxCodes);
             this.bindEvents();
