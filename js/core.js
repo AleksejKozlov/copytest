@@ -12,7 +12,6 @@
         $editCodeList: $('.edit-code-list'),
         editCodes: '.edit-code-item > input',
         codeNumber: '.number',
-        msgWrapper: $('.msg-wrapper'),
         msg: $('.msg'),
 
         init: function () {
@@ -72,11 +71,11 @@
         },
         
         showMsg: function (msg) {
-            app.msg.text(msg);
+            app.msg.text(msg)
+               .removeClass('hidden');
 
-            app.msgWrapper.removeClass('hidden');
             setTimeout(function () {
-                app.msgWrapper.addClass('hidden');
+                app.msg.addClass('hidden');
             }, 1250);
         },
 

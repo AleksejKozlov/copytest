@@ -40,31 +40,24 @@ html {
 	padding: 50px 0 25px;
 }
 
-.msg-wrapper {
+.msg {
 	z-index: 10;
 	position: absolute;
-	top: 50%;
+	top: 0;
 	left: 0;
-	margin-top: -12.5px;
 	width: 100%;
-	height: 25px;	
-	opacity: 1;
-	@include transition(opacity .25s ease);
+	height: 50px;
+	background: rgba(0,0,0, 0.75);
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	font-size: 1.25em;
+	@include transition(top .25s ease);
 
 	&.hidden {
-		opacity: 0;
 		display: block;
-		z-index: -1;
+		top: -50px;
 	}
-}
-
-.msg {
-	background: rgba(0,0,0, 0.75);
-	margin: 0 25px;
-	border-radius: 25px;
-	text-align: center;
-	line-height: 25px;
-	color: #fff;
 }
 
 * {
