@@ -77,7 +77,7 @@
             app.msgWrapper.removeClass('hidden');
             setTimeout(function () {
                 app.msgWrapper.addClass('hidden');
-            }, 750);
+            }, 1000);
         },
 
         saveCodes: function() {
