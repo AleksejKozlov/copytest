@@ -16,6 +16,9 @@
 
         init: function () {
             document.addEventListener('deviceready', this.onDeviceReady, false);
+
+            this.buildEditList(this.maxCodes);
+            this.bindEvents();
             //app.onDeviceReady(); // for web testing
         },
 
@@ -114,13 +117,11 @@
 
         openDB: function () {
             app.db = window.openDatabase("Database", "0.0.1", "Copy Code", 200000);
-            alert('openDB: ' + app.db);
         },
 
         populateDB: function (tx) {
             //tx.executeSql('DROP TABLE IF EXISTS codes');
             tx.executeSql('CREATE TABLE IF NOT EXISTS codes (id unique, code)');
-            alert('populateDB');
         },
 
         errorCB: function (err) {
@@ -129,12 +130,10 @@
 
         successCB: function () {
             app.db.transaction(app.getCodes, app.errorCB);
-            alert('successCB');
         },
 
         getCodes: function (tx) {
             tx.executeSql('SELECT * FROM codes', [], app.getCodesSuccess, app.errorCB);
-            alert('getCodes');
         },
 
         getCodesSuccess: function (tx, results) {
@@ -152,8 +151,6 @@
                 app.buildCodeList(app.maxCodes);
                 app.updateEditCodeList();
             }
-
-            alert('getCodesSuccess');
         },
 
         saveCodesToDB: function (tx) {
@@ -173,14 +170,8 @@
         },
 
         onDeviceReady: function () {
-            alert('device is ready');
-
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
-            /*
-            this.buildEditList(this.maxCodes);
-            this.bindEvents();
-            */
         }
     }
 
