@@ -167,6 +167,8 @@
         },
 
         onDeviceReady: function () {
+            alert('device is ready');
+
             app.openDB();
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
 
