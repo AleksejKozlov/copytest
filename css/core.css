@@ -80,7 +80,7 @@ html {
     z-index: -1; }
 
 .msg {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
   margin: 0 25px;
   border-radius: 25px;
   text-align: center;
