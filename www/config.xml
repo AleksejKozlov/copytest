@@ -98,11 +98,4 @@
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
         <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
     -->
-
-  <gap:config-file platform="android" parent="/manifest">
-    <application android:theme="@android:style/Theme.NoTitleBar">
-      <activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
-    </application>
-  </gap:config-file>
-
 </widget>
