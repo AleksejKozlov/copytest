@@ -182,6 +182,21 @@ h1 {
       /* Opera 11.10+ */
       background-image: linear-gradient(top, #60cc18, #44ab01);
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#60cc18', EndColorStr='#44ab01'); }
+      .code-list > li > .number.active.empty {
+        background-color: white;
+        /* Fallback Color */
+        background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(white));
+        /* Saf4+, Chrome */
+        background-image: -webkit-linear-gradient(top, white, white);
+        /* Chrome 10+, Saf5.1+, iOS 5+ */
+        background-image: -moz-linear-gradient(top, white, white);
+        /* FF3.6 */
+        background-image: -ms-linear-gradient(top, white, white);
+        /* IE10 */
+        background-image: -o-linear-gradient(top, white, white);
+        /* Opera 11.10+ */
+        background-image: linear-gradient(top, white, white);
+        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='white', EndColorStr='white'); }
 
 .edit-code-list {
   margin-bottom: 25px;

@@ -19,6 +19,10 @@
 
 		&.active {
 			@include gradient(#60cc18, #44ab01);
+
+			&.empty {
+				@include gradient(#fff, #fff);
+			}
 		}
 	}
 }
