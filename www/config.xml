@@ -3,12 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.helloworld"
+        id        = "com.phonegap.codecopy"
         version   = "1.0.0">
 
     <name>Code Copy</name>
 
-    <description>copy test</description>
+    <description>
+      Copy the bank card code to device clipboard and you don't need to type it manually anymore.
+    </description>
 
     <author href="http://aleksejkozlov.com" email="aleksejkozlov@gmail.com">
         Aleksej kozlov
@@ -43,10 +45,8 @@
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="9" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-    <preference name="ShowTitle" value="false"/>
 
-
-  <!-- Plugins can also be added here. -->
+    <!-- Plugins can also be added here. -->
     <gap:plugin name="com.verso.cordova.clipboard" version="0.1.0" />
     <gap:plugin name="de.phonostar.softkeyboard-custom" version="0.1.1" />
     <!--

@@ -15,6 +15,7 @@
         codeNumber: '.number',
         msg: $('.msg'),
         codeSelected: false,
+        gutter: 25,
 
         init: function () {
             document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -24,7 +25,7 @@
 
         buildEditList: function (count) {
             var w = window.innerWidth,
-                gutter = 25,
+                gutter = app.gutter,
                 inputWidth = w - 4 * gutter;
 
             for (var i = 1; i <= count; i++) {
@@ -37,7 +38,7 @@
         buildCodeList: function (count) {
             var w = window.innerWidth,
                 h = window.innerHeight - app.$header.innerHeight(),
-                gutter = 25,
+                gutter = app.gutter,
                 x, y;
 
             // 4x9 layout
