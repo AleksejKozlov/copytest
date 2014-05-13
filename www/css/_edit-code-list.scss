@@ -15,6 +15,16 @@
 	position: relative;
 	margin: 0 25px;
 
+	&.active {
+		.number {
+			@include gradient(#60cc18, #44ab01);
+		}
+
+		& > .code {
+			border-bottom: 2px solid #44ab01;
+		}
+	}
+
 	& > .number {
 		@include gradient(#2db8ef, #026eac);
 		border-radius: 5px;

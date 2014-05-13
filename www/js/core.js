@@ -10,9 +10,11 @@
         $mainWrapper: $('.main-wrapper'),
         $codeList: $('.code-list'),
         $editCodeList: $('.edit-code-list'),
+        editCodesItem: '.edit-code-item',
         editCodes: '.edit-code-item > input',
         codeNumber: '.number',
         msg: $('.msg'),
+        codeSelected: false,
 
         init: function () {
             document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -59,12 +61,18 @@
             var number = $(this),
                 code = number.data('code');
 
-            if (!number.hasClass('empty')) {
+            if (!number.hasClass('empty') && !app.codeSelected) {
+                app.codeSelected = true;
+
                 $(app.codeNumber).removeClass('active');
                 number.addClass('active');
 
                 window.plugins.clipboard.copy(code);
                 app.showMsg('Copied to Clipboard');
+
+                setTimeout(function () {
+                    app.codeSelected = false;
+                }, 1250);
             }
         },
         
@@ -88,12 +96,14 @@
                 app.codes[id] = value;
             });
 
+            $(app.editCodesItem).removeClass('active');
+
             // hide keyboard
             SoftKeyboard.hide();
             
             // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
-
+            
             app.showMsg('Saved');
 
             // update code list
@@ -117,6 +127,14 @@
         bindEvents: function () {
             this.$headerIcon.on('click', this.toggleEditCodeList);
             this.$codeList.on('click', this.codeNumber, this.copyCode);
+            this.$editCodeList.on('click', this.editCodesItem, this.makeEditListItemActive);
+        },
+
+        makeEditListItemActive: function() {
+            var item = $(this);
+
+            $(app.editCodesItem).removeClass('active');
+            item.addClass('active');
         },
 
         openDB: function () {
