@@ -139,7 +139,7 @@
         },
 
         openDB: function () {
-            app.db = window.openDatabase("Database", "0.0.1", "Copy Code", 10000);
+            app.db = window.openDatabase("Database", "0.0.1", "Copy Code", 100000);
         },
 
         populateDB: function (tx) {
