@@ -88,6 +88,9 @@
                 app.codes[id] = value;
             });
 
+            // hide keyboard
+            SoftKeyboard.hide();
+            
             // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
 
@@ -178,7 +181,7 @@
 
                 if (app.codes[i + 1] !== '') {
                     number.removeClass('empty');
-                    number.data(app.codes[i + 1]);
+                    number.data('code', app.codes[i + 1]);
                 } else {
                     number.addClass('empty');
                 }
