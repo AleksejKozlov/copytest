@@ -164,7 +164,7 @@
 
             if (len == 0) {
                 for (var i = 1; i <= app.maxCodes; i++) {
-                    tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "123456")');
+                    tx.executeSql('INSERT INTO codes (id, code) VALUES ('+i+', "")');
                 }
             } else {
                 for (var i = 0; i < len; i++) {

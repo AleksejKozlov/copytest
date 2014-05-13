@@ -1,7 +1,10 @@
-body,
-html {
+html,
+body {
 	height: 100%;
+	background-color: #fff;
+	-webkit-backface-visibility: hidden;
 }
+
 
 .main {
 	width: 100%;
