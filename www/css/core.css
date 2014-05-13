@@ -76,7 +76,10 @@ html {
   font-size: 1.25em;
   transition: top 0.25s ease;
   -moz-transition: top 0.25s ease;
-  -webkit-transition: top 0.25s ease; }
+  -webkit-transition: top 0.25s ease;
+  transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -webkit-transform: translateZ(0); }
   .msg.hidden {
     display: block;
     top: -50px; }

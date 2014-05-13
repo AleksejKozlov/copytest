@@ -17,9 +17,7 @@
         init: function () {
             document.addEventListener('deviceready', this.onDeviceReady, false);
 
-            this.buildEditList(this.maxCodes);
             this.bindEvents();
-            //app.onDeviceReady(); // for web testing
         },
 
         buildEditList: function (count) {
@@ -35,8 +33,6 @@
         },
 
         buildCodeList: function (count) {
-            app.$codeList.empty();
-
             var w = window.innerWidth,
                 h = window.innerHeight - app.$header.innerHeight(),
                 gutter = 25,
@@ -47,8 +43,7 @@
             y = (h - gutter * 10) / 9;
 
             for (var i = 1; i <= count; i++) {
-                var code = app.codes[i],
-                    item = '<li class="code-item"><span class="number '+app.checkIfEmptyCode(code)+'" data-code="'+code+'" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
+                var item = '<li class="code-item"><span class="number empty" data-code="" style="width: ' + x + 'px; height: ' + y + 'px; line-height: ' + y + 'px">' + i + '</span></li>';
 
                 app.$codeList.append(item);
             }
@@ -96,8 +91,10 @@
             // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
 
-            // rebuild code list
-            app.buildCodeList(app.maxCodes);
+            app.showMsg('Saved');
+
+            // update code list
+            app.updateCodeList(app.maxCodes);
         },
 
         toggleEditCodeList: function () {
@@ -105,9 +102,13 @@
             
             if (app.$mainWrapper.hasClass('active')) {
                 app.saveCodes();
-            }
 
-            app.$mainWrapper.toggleClass('active');
+                setTimeout(function () {
+                    app.$mainWrapper.toggleClass('active');
+                }, 500);
+            } else {
+                app.$mainWrapper.toggleClass('active');
+            }
         },
 
         bindEvents: function () {
@@ -148,8 +149,8 @@
                     app.codes[results.rows.item(i).id] = results.rows.item(i).code;
                 }
 
-                app.buildCodeList(app.maxCodes);
-                app.updateEditCodeList();
+                app.updateCodeList();
+                app.updateEditList();
             }
         },
 
@@ -159,18 +160,36 @@
             });
         },
 
-        updateEditCodeList: function() {
+        updateEditList: function() {
             var codes = $(app.editCodes);
 
             $.each(codes, function (i) {
                 var code = $(this);
 
-                code.attr('value', app.codes[i+1]);
+                code.attr('value', app.codes[i + 1]);
+            });
+        },
+
+        updateCodeList: function () {
+            var numbers = $(app.codeNumber);
+
+            $.each(numbers, function (i) {
+                var number = $(this);
+
+                if (app.codes[i + 1] !== '') {
+                    number.removeClass('empty');
+                    number.data(app.codes[i + 1]);
+                } else {
+                    number.addClass('empty');
+                }
             });
         },
 
         onDeviceReady: function () {
-            app.openDB();
+            app.buildCodeList(app.maxCodes);
+            app.buildEditList(app.maxCodes);
+
+            app.openDB(); 
             app.db.transaction(app.populateDB, app.errorCB, app.successCB);
         }
     }

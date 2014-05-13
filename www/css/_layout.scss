@@ -53,6 +53,7 @@ html {
 	color: #fff;
 	font-size: 1.25em;
 	@include transition(top .25s ease);
+	@include transform(translateZ(0));
 
 	&.hidden {
 		display: block;
