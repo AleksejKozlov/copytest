@@ -208,7 +208,7 @@
         },
 
         onDeviceReady: function () {
-            navigator.splashscreen.hide();
+            //navigator.splashscreen.hide();
 
             app.buildCodeList(app.maxCodes);
             app.buildEditList(app.maxCodes);
