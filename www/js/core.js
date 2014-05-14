@@ -100,12 +100,12 @@
             $(app.editCodesItem).removeClass('active');
 
             // hide keyboard
-            SoftKeyboard.hide();
+            //SoftKeyboard.hide();
             
             // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
             
-            app.showMsg('Saved');
+            //app.showMsg('Saved');
 
             // update code list
             app.updateCodeList(app.maxCodes);
@@ -114,13 +114,13 @@
         toggleEditCodeList: function (event) {
             var trigger = event.currentTarget;
 
-            if (trigger == null) {
+            if (trigger == null) { // back button
                 if (!app.$mainWrapper.hasClass('active')) {
                     navigator.app.exitApp();
                 } else {
                     app.$headerIcon.trigger('click');
                 }
-            } else {
+            } else { // settings
                 $(this).toggleClass('settings');
 
                 if (app.$mainWrapper.hasClass('active')) {
@@ -206,6 +206,9 @@
 
         updateCodeList: function () {
             var numbers = $(app.codeNumber);
+
+            alert('1: ' + app.codes[i + 1]);
+            alert('2: ' + app.codes[i + 2]);
 
             $.each(numbers, function (i) {
                 var number = $(this);
