@@ -29,7 +29,7 @@
                 inputWidth = w - 4 * gutter;
 
             for (var i = 1; i <= count; i++) {
-                var item = '<li><div class="edit-code-item"><label class="number" for="number_' + i + '">' + i + '</label><input data-index="'+i+'" class="code" type="number" name="number_' + i + '" id="number_' + i + '" style="width: ' + inputWidth + 'px"/></div></li>';
+                var item = '<li><div class="edit-code-item"><label class="number" for="number_' + i + '">' + i + '</label><input data-index="'+i+'" class="code" type="tel" name="number_' + i + '" id="number_' + i + '" style="width: ' + inputWidth + 'px"/></div></li>';
 
                 app.$editCodeList.append(item);
             }
@@ -206,9 +206,6 @@
 
         updateCodeList: function () {
             var numbers = $(app.codeNumber);
-
-            alert('1: ' + app.codes[i + 1]);
-            alert('2: ' + app.codes[i + 2]);
 
             $.each(numbers, function (i) {
                 var number = $(this);
