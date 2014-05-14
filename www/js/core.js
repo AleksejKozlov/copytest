@@ -111,24 +111,36 @@
             app.updateCodeList(app.maxCodes);
         },
 
-        toggleEditCodeList: function () {
-            $(this).toggleClass('settings');
-            
-            if (app.$mainWrapper.hasClass('active')) {
-                app.saveCodes();
+        toggleEditCodeList: function (event) {
+            var trigger = event.currentTarget;
 
-                setTimeout(function () {
-                    app.$mainWrapper.toggleClass('active');
-                }, 500);
+            if (trigger == null) {
+                if (!app.$mainWrapper.hasClass('active')) {
+                    navigator.app.exitApp();
+                } else {
+                    app.$headerIcon.trigger('click');
+                }
             } else {
-                app.$mainWrapper.toggleClass('active');
+                $(this).toggleClass('settings');
+
+                if (app.$mainWrapper.hasClass('active')) {
+                    app.saveCodes();
+
+                    setTimeout(function () {
+                        app.$mainWrapper.toggleClass('active');
+                    }, 500);
+                } else {
+                    app.$mainWrapper.toggleClass('active');
+                }
             }
         },
 
         bindEvents: function () {
+            document.addEventListener('backbutton', this.toggleEditCodeList, false);
             this.$headerIcon.on('click', this.toggleEditCodeList);
             this.$codeList.on('click', this.codeNumber, this.copyCode);
             this.$editCodeList.on('click', this.editCodesItem, this.makeEditListItemActive);
+            
         },
 
         makeEditListItemActive: function() {

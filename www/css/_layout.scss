@@ -66,3 +66,8 @@ body {
     -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
     outline: none !important;
 }
+
+*:not(input):not(textarea) {
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}       
