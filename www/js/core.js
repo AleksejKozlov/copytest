@@ -100,12 +100,12 @@
             $(app.editCodesItem).removeClass('active');
 
             // hide keyboard
-            //SoftKeyboard.hide();
+            SoftKeyboard.hide();
             
             // save to db
             app.db.transaction(app.saveCodesToDB, app.errorCB);
             
-            //app.showMsg('Saved');
+            app.showMsg('Saved');
 
             // update code list
             app.updateCodeList(app.maxCodes);
