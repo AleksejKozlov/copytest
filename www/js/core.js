@@ -140,14 +140,20 @@
             this.$headerIcon.on('click', this.toggleEditCodeList);
             this.$codeList.on('click', this.codeNumber, this.copyCode);
             this.$editCodeList.on('click', this.editCodesItem, this.makeEditListItemActive);
+            this.$editCodeList.on('focus', this.editCodes, this.makeEditListItemActive);
             
         },
 
-        makeEditListItemActive: function() {
-            var item = $(this);
+        makeEditListItemActive: function () {
+            var $trigger = $(this);
 
             $(app.editCodesItem).removeClass('active');
-            item.addClass('active');
+
+            if ($trigger.attr('data-index')) {
+                $trigger.parent().addClass('active');
+            } else {
+                $trigger.addClass('active');
+            }                       
         },
 
         openDB: function () {
